@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: baskerville;
+  src: url(/BaskervvilleSC-Regular.ttf);
+}
+
+.baskerville-font {
+  font-family: baskerville;
+}

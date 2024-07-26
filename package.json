@@ -1,5 +1,5 @@
 {
-  "name": "pix-craft",
+  "name": "dream-jobs-client",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,33 +10,26 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "firebase": "^10.12.2",
-    "prop-types": "^15.8.1",
+    "firebase": "^10.12.4",
     "react": "^18.3.1",
-    "react-alert": "^7.0.3",
-    "react-alert-template-basic": "^1.0.2",
-    "react-awesome-slider": "^4.1.0",
     "react-dom": "^18.3.1",
+    "react-helmet": "^6.1.0",
     "react-icons": "^5.2.1",
-    "react-router-dom": "^6.23.1",
-    "react-select": "^5.8.0",
-    "react-toastify": "^10.0.5",
-    "react-tooltip": "^5.27.0",
-    "sweetalert2": "^11.12.1",
-    "typewriter-effect": "^2.21.0"
+    "react-router-dom": "^6.25.1",
+    "react-toastify": "^10.0.5"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
     "autoprefixer": "^10.4.19",
-    "daisyui": "^4.12.6",
+    "daisyui": "^4.12.10",
     "eslint": "^8.57.0",
-    "eslint-plugin-react": "^7.34.2",
+    "eslint-plugin-react": "^7.34.3",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-react-refresh": "^0.4.7",
-    "postcss": "^8.4.38",
-    "tailwindcss": "^3.4.4",
-    "vite": "^5.3.1"
+    "postcss": "^8.4.40",
+    "tailwindcss": "^3.4.6",
+    "vite": "^5.3.4"
   }
 }
