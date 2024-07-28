@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { Link, useLocation } from "react-router-dom";
-
 const Navbar = () => {
   const [isDropOpen, setIsDropOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -80,95 +79,97 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="min-w-full bg-gray-100 dark:bg-[#3c4853] flex justify-between pr-3 pl-4 lg:px-8 py-3">
-      {/* Nav Start */}
-      <div>
-        <Link to="/">
-          {" "}
-          <h2 className="cursor-pointer baskerville-font text-xl font-semibold text-sky-500 dark:text-sky-300">
-            Dream<span className="text-sky-400 dark:text-sky-200">Jobs</span>
-          </h2>
-        </Link>
-      </div>
-
-      {/* Nav center */}
-      <ul className="lg:flex hidden lg:flex-row flex-col gap-x-5">
-        <Link to="/">
-          <li
-            className={`cursor-pointer text-gray-600 dark:text-gray-200 decoration-sky-400 lg:border-none hover:underline hover:underline-offset-4 ${
-              location.pathname === "/"
-                ? "text-blue-500 font-semibold dark:text-blue-400"
-                : ""
-            }`}
-          >
-            Home
-          </li>
-        </Link>
-        <Link to="/jobs">
-          <li
-            className={`cursor-pointer text-gray-600 dark:text-gray-200 decoration-sky-400 lg:border-none hover:underline hover:underline-offset-4 ${
-              location.pathname === "/jobs"
-                ? "text-blue-500 font-semibold dark:text-blue-400"
-                : ""
-            }`}
-          >
-            Jobs
-          </li>
-        </Link>
-        <Link to="/addJob">
-          <li
-            className={`cursor-pointer text-gray-600 dark:text-gray-200 decoration-sky-400 lg:border-none hover:underline hover:underline-offset-4 ${
-              location.pathname === "/addJob"
-                ? "text-blue-500 font-semibold dark:text-blue-400"
-                : ""
-            }`}
-          >
-            Add Job
-          </li>
-        </Link>
-        <Link to="/myJobs">
-          <li
-            className={`cursor-pointer text-gray-600 dark:text-gray-200 decoration-sky-400 lg:border-none hover:underline hover:underline-offset-4 ${
-              location.pathname === "/myJobs"
-                ? "text-blue-500 font-semibold dark:text-blue-400"
-                : ""
-            }`}
-          >
-            My Job
-          </li>
-        </Link>
-      </ul>
-
-      {/* Nav End */}
-      <div className="flex items-center lg:gap-x-2">
-        {swap}
-        <div className="flex items-center">
-          <Link to="login">
+    <>
+      <nav className="min-w-full z-10 bg-gray-100 dark:bg-[#3c4853] flex justify-between pr-3 pl-4 lg:px-8 py-3">
+        {/* Nav Start */}
+        <div>
+          <Link to="/">
             {" "}
-            <p className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3">
-              Login
-            </p>
+            <h2 className="cursor-pointer baskerville-font text-xl font-semibold text-sky-500 dark:text-sky-300">
+              Dream<span className="text-sky-400 dark:text-sky-200">Jobs</span>
+            </h2>
           </Link>
-          <div
-            onClick={handleDropdownClick}
-            className="lg:-ml-7 lg:hidden text-xl font-semibold text-white"
-          >
-            <HiBars3BottomRight className="" />
+        </div>
+
+        {/* Nav center */}
+        <ul className="lg:flex hidden lg:flex-row flex-col gap-x-5">
+          <Link to="/">
+            <li
+              className={`cursor-pointer text-gray-600 dark:text-gray-200 lg:border-none hover:text-sky-500 ${
+                location.pathname === "/"
+                  ? " underline underline-offset-4 decoration-2 decoration-sky-400"
+                  : ""
+              }`}
+            >
+              Home
+            </li>
+          </Link>
+          <Link to="/jobs">
+            <li
+              className={`cursor-pointer text-gray-600 dark:text-gray-200 lg:border-none hover:text-sky-500 ${
+                location.pathname === "/jobs"
+                  ? " underline underline-offset-4 decoration-2 decoration-sky-400"
+                  : ""
+              }`}
+            >
+              Jobs
+            </li>
+          </Link>
+          <Link to="/addJob">
+            <li
+              className={`cursor-pointer text-gray-600 dark:text-gray-200 lg:border-none hover:text-sky-500 ${
+                location.pathname === "/addJob"
+                  ? " underline underline-offset-4 decoration-2 decoration-sky-400"
+                  : ""
+              }`}
+            >
+              Add Job
+            </li>
+          </Link>
+          <Link to="/myJobs">
+            <li
+              className={`cursor-pointer text-gray-600 dark:text-gray-200 lg:border-none hover:text-sky-500 ${
+                location.pathname === "/myJobs"
+                  ? " underline underline-offset-4 decoration-2 decoration-sky-400"
+                  : ""
+              }`}
+            >
+              My Job
+            </li>
+          </Link>
+        </ul>
+
+        {/* Nav End */}
+        <div className="flex items-center lg:gap-x-2">
+          {swap}
+          <div className="flex items-center">
+            <Link to="login">
+              {" "}
+              <p className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3">
+                Login
+              </p>
+            </Link>
+            <div
+              onClick={handleDropdownClick}
+              className="lg:-ml-7 lg:hidden text-xl font-semibold dark:text-white text-gray-800"
+            >
+              <HiBars3BottomRight />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Dropdown */}
-      {isDropOpen ? (
-        <div className="absolute text-right min-h-screen rounded-s-sm md:w-1/3 lg:hidden py-4 px-8 w-2/3 z-10 bg-slate-200 right-0 top-0 duration-300">
-          {navLinksDrawer}
-        </div>
-      ) : (
-        <div className="absolute lg:hidden min-h-screen py-4 px-8 z-10 bg-slate-200 -right-48 top-0 duration-300">
-          {navLinksDrawer}
-        </div>
-      )}
-    </nav>
+        {/* Dropdown */}
+        {isDropOpen ? (
+          <div className="absolute text-right min-h-screen rounded-s-sm md:w-1/3 lg:hidden py-4 px-8 w-2/3 z-10 bg-slate-200 right-0 top-0 duration-300">
+            {navLinksDrawer}
+          </div>
+        ) : (
+          <div className="absolute lg:hidden min-h-screen py-4 px-8 z-10 bg-slate-200 -right-48 top-0 duration-300">
+            {navLinksDrawer}
+          </div>
+        )}
+      </nav>
+    </>
   );
 };
 

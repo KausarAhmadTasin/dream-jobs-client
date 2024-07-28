@@ -4,12 +4,36 @@ const Home = () => {
   const jobs = useLoaderData();
 
   return (
-    <div>
-      <header></header>
+    <div className="md:container mx-3 md:mx-auto">
+      <header>
+        <div className="flex md:flex-row flex-col-reverse my-5 md:my-10 gap-x-4 border py-8 md:py-32 rounded-[2rem] px-8 dark:bg-[#1A1B1F] bg-[#F3F4F6] justify-between">
+          <div className="relative mt-10 md:mt-0 shadow-2xl md:w-1/3 my-5">
+            <input
+              type="text"
+              className="rounded-md h-full py-2 focus:outline-none focus:shadow-md px-3 flex items-center text-gray-600 w-full dark:bg-slate-50 bg-white"
+              placeholder="Job title"
+            />
+            <div className="bg-sky-400 h-full rounded-e-md py-2 px-3 flex items-center text-white font-semibold top-0 -right-1 absolute">
+              <p>Search Job</p>
+            </div>
+          </div>
+          <div className="md:text-end text-center md:w-1/2">
+            <h1 className="text-3xl bg-clip-text text-transparent bg-gradient-to-r from-sky-600 dark:from-sky-400 to-orange-400 dark:to-orange-300 mb-5 md:mb-0 font-semibold ">
+              Your Dream Job Awaits
+            </h1>
+            <p className="dark:text-gray-200 text-gray-500">
+              Find the best job opportunities tailored to your skills and
+              preferences. Browse through various job categories and apply
+              seamlessly.
+            </p>
+          </div>
+        </div>
+      </header>
+
       {/* Jobs */}
       <div>
         {
-          <ul className="container mx-auto max-h-16">
+          <ul className="container mx-auto">
             {jobs.map((job) => (
               <li
                 className="flex w-3/4 mx-auto border-t border-r border-l p-2"
