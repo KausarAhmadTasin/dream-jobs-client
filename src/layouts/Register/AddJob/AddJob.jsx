@@ -1,7 +1,393 @@
+import { useForm } from "react-hook-form";
+
 const AddJob = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const handleAddJobSubmit = (data) => console.log(data);
+
   return (
-    <div>
-      <p>I am not something went wrong. I am sorry </p>
+    <div className="flex mt-10 pb-10 items-center justify-center min-h-screen">
+      <form
+        className="border-black w-2/3 bg-[#FEFFF1] dark:bg-[#1A1B1F] dark:border dark:border-gray-50 py-10 px-20 rounded-md"
+        onSubmit={handleSubmit(handleAddJobSubmit)}
+      >
+        {/* 1st Row */}
+        <div className="flex gap-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Job Title</label>
+            <input
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Job title"
+              {...register("job_title", { required: true })}
+            />
+            {errors.job_title && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Job title is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Company</label>
+            <input
+              type="text"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Company"
+              {...register("company", { required: true })}
+            />
+            {errors.company && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Company field is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 1.1th Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Photo URL</label>
+            <input
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Photo URL"
+              {...register("photoUrl", { required: true })}
+            />
+            {errors.photoUrl && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Photo URL is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Number of Vacancies</label>
+            <input
+              type="number"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Vacancy number"
+              {...register("vacancy", { required: true })}
+            />
+            {errors.vacancy && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Vacancy number field is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 2nd Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Employer</label>
+            <input
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Employer"
+              {...register("employer", { required: true })}
+            />
+            {errors.employer && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Employer is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Employer Email</label>
+            <input
+              type="email"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Employer Email"
+              {...register("employer_email", { required: true })}
+            />
+            {errors.employer_email && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Employer email is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 1.3th Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Requiremens</label>
+            <input
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Requiremens"
+              {...register("requirements", { required: true })}
+            />
+            {errors.requirements && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Requiremens is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Responsibilities</label>
+            <input
+              type="text"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Responsibilities"
+              {...register("responsibilities", { required: true })}
+            />
+            {errors.responsibilities && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Responsibilities field is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 3rd Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Deadline Start</label>
+            <input
+              type="date"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-slate-500 text-white"
+              placeholder="Deadline Start"
+              {...register("deadline_start", { required: true })}
+            />
+            {errors.deadline_start && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Deadline start is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Deadline End</label>
+            <input
+              type="date"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-slate-500 text-white  "
+              {...register("deadline", { required: true })}
+            />
+            {errors.deadline_end && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Deadline end is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 4th Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Salary Range Min(BDT)</label>
+            <input
+              type="number"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Salary Range Min (৳)"
+              {...register("salary_min", { required: true })}
+            />
+            {errors.salary_min && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Minimum salary is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Salary Range Max(BDT)</label>
+            <input
+              type="number"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Salary Range Max (৳)"
+              {...register("salary_max", { required: true })}
+            />
+            {errors.salary_max && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Maximum salary is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 5th Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Location</label>
+            <input
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Location"
+              {...register("location", { required: true })}
+            />
+            {errors.location && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Location is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Job Type</label>
+            <select
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              {...register("job_type", { required: true })}
+            >
+              <option className="py-2" value="On-site">
+                On-site
+              </option>
+              <option className="py-2" value="Hybrid">
+                Hybrid
+              </option>
+              <option className="py-2" value="Part-time">
+                Part-time
+              </option>
+              <option className="py-2" value="Remote">
+                Remote
+              </option>
+            </select>
+            {errors.job_type && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Job type is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 1.4th Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Probation Period(Months)</label>
+            <input
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Probation Period"
+              type="number"
+              {...register("probation_period", { required: true })}
+            />
+            {errors.probation_period && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Probation Period is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Bonus/Year</label>
+            <input
+              type="number"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Bonus"
+              {...register("bonus", { required: true })}
+            />
+            {errors.bonus && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Bonus field is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 1.5th Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Other Benifits</label>
+            <input
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Other Benifits"
+              {...register("other_benifits", { required: true })}
+            />
+            {errors.other_benifits && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Other Benifits is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Increment/Year</label>
+            <input
+              type="number"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Increment"
+              {...register("increment", { required: true })}
+            />
+            {errors.increment && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Increment field is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* 6th Row */}
+        <div className="flex gap-4 mt-4">
+          <div className="w-1/2">
+            <label className="block mb-2">Job posting Date</label>
+            <input
+              type="date"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-slate-500 text-white  "
+              placeholder="Job posting Date"
+              {...register("job_posting_date", { required: true })}
+            />
+            {errors.job_posting_date && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Job posting date is required*
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="w-1/2">
+            <label className="block mb-2">Weekends (Days/Week)</label>
+            <input
+              type="text"
+              className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
+              placeholder="Weekends"
+              {...register("weekends", { required: true })}
+            />
+            {errors.weekends && (
+              <div>
+                <span className="text-red-500 text-sm">
+                  Weekends is required*
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Submit Button */}
+        <div className="mt-9">
+          <input
+            type="submit"
+            value="Add Job"
+            className="w-full p-2 flex items-center bg-sky-500 text-white rounded-md cursor-pointer"
+          />
+        </div>
+      </form>
     </div>
   );
 };
