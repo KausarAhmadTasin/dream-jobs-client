@@ -1,5 +1,8 @@
+import axios from "axios";
 import { useForm } from "react-hook-form";
+import { toast, ToastContainer } from "react-toastify";
 
+import "react-toastify/dist/ReactToastify.css";
 const AddJob = () => {
   const {
     register,
@@ -7,10 +10,22 @@ const AddJob = () => {
     formState: { errors },
   } = useForm();
 
-  const handleAddJobSubmit = (data) => console.log(data);
+  const handleAddJobSubmit = async (data) => {
+    try {
+      const response = await axios.post("http://localhost:5000/jobs", data);
+      console.log(response.data);
+      if (response.data.insertedId) {
+        toast.success("Job post added!");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error("Failed to add job!");
+    }
+  };
 
   return (
     <div className="flex mt-10 pb-10 items-center justify-center min-h-screen">
+      <ToastContainer />
       <form
         className="border-black w-2/3 bg-[#FEFFF1] dark:bg-[#1A1B1F] dark:border dark:border-gray-50 py-10 px-20 rounded-md"
         onSubmit={handleSubmit(handleAddJobSubmit)}
@@ -73,12 +88,12 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Vacancy number"
-              {...register("vacancy", { required: true })}
+              {...register("vacancy", { required: true, min: 0 })}
             />
             {errors.vacancy && (
               <div>
                 <span className="text-red-500 text-sm">
-                  Vacancy number field is required*
+                  Vacancy number field is required. It must be more than 0*
                 </span>
               </div>
             )}
@@ -198,12 +213,12 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Salary Range Min (৳)"
-              {...register("salary_min", { required: true })}
+              {...register("salary_min", { required: true, min: 0 })}
             />
             {errors.salary_min && (
               <div>
                 <span className="text-red-500 text-sm">
-                  Minimum salary is required*
+                  Minimum salary is required. It must be more than 0*
                 </span>
               </div>
             )}
@@ -214,12 +229,12 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Salary Range Max (৳)"
-              {...register("salary_max", { required: true })}
+              {...register("salary_max", { required: true, min: 0 })}
             />
             {errors.salary_max && (
               <div>
                 <span className="text-red-500 text-sm">
-                  Maximum salary is required*
+                  Maximum salary is required. It must be more than 0*
                 </span>
               </div>
             )}
@@ -280,12 +295,12 @@ const AddJob = () => {
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Probation Period"
               type="number"
-              {...register("probation_period", { required: true })}
+              {...register("probation_period", { required: true, min: 0 })}
             />
             {errors.probation_period && (
               <div>
                 <span className="text-red-500 text-sm">
-                  Probation Period is required*
+                  Probation Period is required. It must be more than 0*
                 </span>
               </div>
             )}
@@ -296,12 +311,12 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Bonus"
-              {...register("bonus", { required: true })}
+              {...register("bonus", { required: true, min: 0 })}
             />
             {errors.bonus && (
               <div>
                 <span className="text-red-500 text-sm">
-                  Bonus field is required*
+                  Bonus field is required. It must be more than 0*
                 </span>
               </div>
             )}
@@ -331,12 +346,12 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Increment"
-              {...register("increment", { required: true })}
+              {...register("increment", { required: true, min: 0 })}
             />
             {errors.increment && (
               <div>
                 <span className="text-red-500 text-sm">
-                  Increment field is required*
+                  Increment field is required. It must be more than 0*
                 </span>
               </div>
             )}
@@ -367,7 +382,7 @@ const AddJob = () => {
               type="text"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Weekends"
-              {...register("weekends", { required: true })}
+              {...register("weekends", { required: true, min: 0, max: 6 })}
             />
             {errors.weekends && (
               <div>

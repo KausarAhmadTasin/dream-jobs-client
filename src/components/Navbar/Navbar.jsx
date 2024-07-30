@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { Link, useLocation } from "react-router-dom";
+import AuthContext from "../../provider/AuthProvider/AuthContex";
+
 const Navbar = () => {
   const [isDropOpen, setIsDropOpen] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(() => {
@@ -10,6 +12,7 @@ const Navbar = () => {
   });
 
   const location = useLocation();
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     // Apply the theme to the document
@@ -108,7 +111,7 @@ const Navbar = () => {
             <li
               className={`cursor-pointer text-gray-600 dark:text-gray-200 lg:border-none hover:text-sky-500 ${
                 location.pathname === "/jobs"
-                  ? " underline underline-offset-4 decoration-2 decoration-sky-400"
+                  ? "underline underline-offset-4 decoration-2 decoration-sky-400"
                   : ""
               }`}
             >
@@ -142,6 +145,15 @@ const Navbar = () => {
         {/* Nav End */}
         <div className="flex items-center lg:gap-x-2">
           {swap}
+          {user?.photoURL ? (
+            <img
+              className="h-9 w-9 rounded-full "
+              src={user?.photoURL}
+              alt=""
+            />
+          ) : (
+            <span className="loading mr-2 loading-spinner mx-1   loading-md my-[.37rem]"></span>
+          )}
           <div className="flex items-center">
             <Link to="login">
               {" "}
