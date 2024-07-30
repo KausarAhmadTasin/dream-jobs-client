@@ -88,7 +88,7 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Vacancy number"
-              {...register("vacancy", { required: true, min: 0 })}
+              {...register("vacancy", { required: true, min: 1 })}
             />
             {errors.vacancy && (
               <div>
@@ -213,7 +213,7 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Salary Range Min (৳)"
-              {...register("salary_min", { required: true, min: 0 })}
+              {...register("salary_min", { required: true, min: 1 })}
             />
             {errors.salary_min && (
               <div>
@@ -229,7 +229,7 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Salary Range Max (৳)"
-              {...register("salary_max", { required: true, min: 0 })}
+              {...register("salary_max", { required: true, min: 1 })}
             />
             {errors.salary_max && (
               <div>
@@ -295,7 +295,7 @@ const AddJob = () => {
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Probation Period"
               type="number"
-              {...register("probation_period", { required: true, min: 0 })}
+              {...register("probation_period", { required: true, min: 1 })}
             />
             {errors.probation_period && (
               <div>
@@ -311,7 +311,7 @@ const AddJob = () => {
               type="number"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Bonus"
-              {...register("bonus", { required: true, min: 0 })}
+              {...register("bonus", { required: true, min: 1 })}
             />
             {errors.bonus && (
               <div>
@@ -382,7 +382,7 @@ const AddJob = () => {
               type="text"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Weekends"
-              {...register("weekends", { required: true, min: 0, max: 6 })}
+              {...register("weekends", { required: true })}
             />
             {errors.weekends && (
               <div>

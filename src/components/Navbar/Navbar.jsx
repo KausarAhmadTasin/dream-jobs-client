@@ -2,6 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { HiBars3BottomRight } from "react-icons/hi2";
 import { Link, useLocation } from "react-router-dom";
 import AuthContext from "../../provider/AuthProvider/AuthContex";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [isDropOpen, setIsDropOpen] = useState(false);
@@ -12,7 +15,7 @@ const Navbar = () => {
   });
 
   const location = useLocation();
-  const { user } = useContext(AuthContext);
+  const { user, logOut, loading } = useContext(AuthContext);
 
   useEffect(() => {
     // Apply the theme to the document
@@ -27,6 +30,16 @@ const Navbar = () => {
 
   const handleThemeToggle = () => {
     setIsDarkMode(!isDarkMode);
+  };
+
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        toast.success("Signed out!");
+      })
+      .catch(() => {
+        toast.error("Sign out failed!");
+      });
   };
 
   // Swap control
@@ -145,22 +158,42 @@ const Navbar = () => {
         {/* Nav End */}
         <div className="flex items-center lg:gap-x-2">
           {swap}
-          {user?.photoURL ? (
-            <img
-              className="h-9 w-9 rounded-full "
-              src={user?.photoURL}
-              alt=""
-            />
-          ) : (
-            <span className="loading mr-2 loading-spinner mx-1   loading-md my-[.37rem]"></span>
-          )}
+          <Tooltip id="my-tooltip" />
           <div className="flex items-center">
-            <Link to="login">
-              {" "}
-              <p className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3">
-                Login
-              </p>
-            </Link>
+            {loading ? (
+              <>
+                <span className="loading mr-3 loading-spinner mx-1 ml-2 loading-md my-1"></span>{" "}
+                <p
+                  onClick={handleLogout}
+                  className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3"
+                >
+                  Logout
+                </p>
+              </>
+            ) : user ? (
+              <>
+                <img
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                  className="h-8 mr-3 w-8 rounded-full "
+                  src={user?.photoURL}
+                  alt=""
+                />
+                <p
+                  onClick={handleLogout}
+                  className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3"
+                >
+                  Logout
+                </p>
+              </>
+            ) : (
+              <Link to="login">
+                {" "}
+                <p className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3">
+                  Login
+                </p>
+              </Link>
+            )}
             <div
               onClick={handleDropdownClick}
               className="lg:-ml-7 lg:hidden text-xl font-semibold dark:text-white text-gray-800"

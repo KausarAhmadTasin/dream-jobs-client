@@ -8,6 +8,7 @@ import Home from "../layouts/Home/Home";
 import AddJob from "../layouts/Register/AddJob/AddJob";
 import JobDetails from "../layouts/JobDetails/JobDetails";
 import MyJobs from "../layouts/MyJobs/MyJobs";
+import PrivateRoutes from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("jobs.json"),
+        loader: () => fetch(`http://localhost:5000/home`),
       },
       {
         path: "/jobs",
@@ -27,13 +28,31 @@ const router = createBrowserRouter([
       },
       {
         path: "/jobDetails/:id",
-        element: <JobDetails />,
+        element: (
+          <PrivateRoutes>
+            <JobDetails />
+          </PrivateRoutes>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/jobs/${params.id}`),
       },
       {
         path: "/myJobs",
-        element: <MyJobs />,
+        element: (
+          <PrivateRoutes>
+            {" "}
+            <MyJobs />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/addJob",
+        element: (
+          <PrivateRoutes>
+            {" "}
+            <AddJob />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",
@@ -42,10 +61,6 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
-      },
-      {
-        path: "/addJob",
-        element: <AddJob />,
       },
     ],
   },
