@@ -58,7 +58,7 @@ const Jobs = () => {
           {/* Jobs Table */}
           <div>
             {
-              <ul className="container mx-auto max-h-16">
+              <ul className="container mx-auto">
                 <Job jobs={jobs} />
               </ul>
             }

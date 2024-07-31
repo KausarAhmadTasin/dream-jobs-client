@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
+import { FaArrowRightLong } from "react-icons/fa6";
 
 const Job = ({ jobs }) => {
   return (
@@ -57,8 +58,8 @@ const Job = ({ jobs }) => {
             </p>
 
             <Link to={`/jobDetails/${job._id}`}>
-              <h2 className="font-semibold cursor-pointer hover:-translate-y-1 duration-300 hover:text-sky-600 text-sky-500">
-                View Details -&gt;
+              <h2 className="font-semibold flex items-center justify-end gap-x-1  cursor-pointer hover:-translate-y-1 duration-300 hover:text-sky-600 text-sky-500">
+                View Details <FaArrowRightLong />
               </h2>
             </Link>
           </div>
