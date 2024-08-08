@@ -2,14 +2,15 @@ const Hero = () => {
   return (
     <div>
       <header>
-        <div className="flex justify-between flex-col-reverse my-5 gap-x-4 border py-8 lg:py-32 rounded-[2rem] px-8 bg-white dark:bg-[#1A1B1F] items-center">
-          <div className="relative mt-10 lg:mt-14 lg:w-5/12 shadow-2xl md:w-3/4">
+        <div className="flex justify-between lg:mt-10 flex-col-reverse my-5 gap-x-4 border py-8 lg:py-32 rounded-[2rem] px-8 bg-white dark:bg-[#1A1B1F] items-center">
+          {/* Search input */}
+          <div className="relative mt-10 text-sm md:text-base lg:mt-14 lg:w-5/12 w-full shadow-2xl md:w-3/4">
             <input
               type="text"
               className="rounded-md h-full py-2 border focus:outline-none focus:shadow-md px-3 flex items-center text-gray-600 w-full dark:bg-slate-50 bg-white"
               placeholder="Search by job title"
             />
-            <div className="bg-sky-400 h-full rounded-e-md py-2 px-3 flex items-center text-white font-semibold top-0 -right-1 absolute cursor-pointer">
+            <div className="bg-sky-400 h-full rounded-e-md py-2 md:px-3 px-2 flex items-center text-white font-semibold top-0 -right-1 absolute cursor-pointer">
               <p>Search Job</p>
             </div>
           </div>

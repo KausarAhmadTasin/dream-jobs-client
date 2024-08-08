@@ -9,7 +9,7 @@ import Marquee from "react-fast-marquee";
 const Home = () => {
   const [logos, setLogos] = useState([]);
   const jobs = useLoaderData();
-  console.log(logos);
+  // console.log(logos);
 
   useEffect(() => {
     axios.get(`http://localhost:5000/logos`).then((res) => setLogos(res.data));
@@ -19,8 +19,12 @@ const Home = () => {
     <div className="md:container mx-3 md:mx-auto">
       <Hero></Hero>
       <Tooltip id="my-tooltip" />
-      {/* Jobs */}
+
+      {/* Top Jobs */}
       <div>
+        <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 text-center mt-20 mb-10 underline underline-offset-[10px] decoration-dashed decoration-orange-400">
+          Top Jobs
+        </h1>
         {
           <ul className="container mx-auto">
             <Job jobs={jobs} />
@@ -28,10 +32,16 @@ const Home = () => {
         }
       </div>
       {/* Select jobs ends */}
+
       {/* We offer jobs section */}
-      <div className="container mx-auto w-5/6 my-10 mt-28 text-center">
-        <h1 className="text-4xl font-semibold mb-4 text-black dark:text-gray-100">
-          Featured Companies Hiring Now
+      <div className="container mx-auto w-full text-sm md:text-base md:w-5/6 my-10 mt-28 text-center">
+        <h1 className="md:text-4xl text-2xl font-semibold mb-4 text-gray-800 dark:text-gray-100">
+          Featured{" "}
+          <span className="underline underline-offset-4 md:underline-offset-[8px] decoration-dashed decoration-orange-400">
+            Companies
+          </span>{" "}
+          Hiring Now
+          <span className="text-orange-400">!!</span>
         </h1>
         <p className="text-gray-600 dark:text-gray-300 mb-16">
           Explore Job Opportunities with Top Companies
