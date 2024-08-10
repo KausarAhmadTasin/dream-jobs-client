@@ -2,7 +2,7 @@ const Hero = () => {
   return (
     <div>
       <header>
-        <div className="flex justify-between bg-blue-50 lg:mt-10 flex-col-reverse my-5 gap-x-4 border py-8 lg:py-32 rounded-[2rem] px-8 bg-white dark:bg-[#1A1B1F] items-center">
+        <div className="flex justify-between bg-sky-100 lg:mt-10 flex-col-reverse my-5 gap-x-4 border py-8 lg:py-32 rounded-[2rem] px-8 dark:bg-[#1A1B1F] items-center">
           {/* Search input */}
           <div className="relative mt-10 text-sm md:text-base lg:mt-14 lg:w-5/12 w-full shadow-2xl md:w-3/4">
             <input

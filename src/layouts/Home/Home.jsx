@@ -26,7 +26,7 @@ const Home = () => {
       <Tooltip id="my-tooltip" />
 
       {/* Top Jobs */}
-      <div className="rounded-[2rem] container mx-auto bg-blue-50 dark:bg-[#1A1B1F] mt-10 py-10">
+      <div className="rounded-[2rem] container mx-auto bg-sky-100 dark:bg-[#1A1B1F] mt-10 py-10">
         <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 text-center mb-16 underline underline-offset-[10px] decoration-dashed decoration-orange-400">
           Top Jobs
         </h1>

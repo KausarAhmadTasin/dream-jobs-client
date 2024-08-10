@@ -29,8 +29,6 @@ const Jobs = () => {
     }
   };
 
-  console.log(jobs);
-
   const hangleNextClick = () => {
     if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
@@ -42,7 +40,7 @@ const Jobs = () => {
       {loading ? (
         <span className="loading min-h-screen dark:bg-[#1A1B1F] pt-40 loading-spinner loading-lg"></span>
       ) : (
-        <div className="container mx-auto bg-sky-50 rounded-lg mb-16 mt-8 dark:bg-[#1A1B1F] pb-6">
+        <div className="container mx-auto pt-3 bg-sky-100 rounded-lg mb-16 mt-8 dark:bg-[#1A1B1F] pb-6">
           <div className="flex w-3/4 mx-auto gap-x-4 mt-3 mb-6 justify-between items-center">
             {" "}
             <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mt-6 mb-6 underline underline-offset-[10px] decoration-dashed decoration-orange-400">
@@ -81,7 +79,10 @@ const Jobs = () => {
 
             {pages.map((page) => (
               <button
-                onClick={() => setCurrentPage(page)}
+                onClick={() => {
+                  setCurrentPage(page);
+                  window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
                 className={
                   currentPage === page
                     ? `btn mr-1 border-none bg-orange-500 text-white`
