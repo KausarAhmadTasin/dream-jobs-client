@@ -18,7 +18,7 @@ const Jobs = () => {
       {loading ? (
         <span className="loading loading-spinner loading-lg"></span>
       ) : (
-        <div className="container mx-auto bg-blue-100 dark:bg-[#1A1B1F]">
+        <div className="container mx-auto bg-sky-50 dark:bg-[#1A1B1F]">
           {/* Select jobs */}
           <div className="flex my-5 lg:px-48 items-center justify-center">
             <div className="my-6 container mx-auto">

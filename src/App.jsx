@@ -5,7 +5,7 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div className="min-h-screen bg-blue-100 dark:bg-[#1A1B1F]">
+    <div className="min-h-screen pt-14 bg-white dark:bg-[#1A1B1F]">
       <Navbar />
       <Outlet />
       <Footer />

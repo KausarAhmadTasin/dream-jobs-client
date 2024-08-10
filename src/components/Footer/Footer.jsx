@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer footer-center bg-slate-50 dark:bg-[#25262c] text-primary-content dark:text-gray-200 p-10">
+      <footer className="footer footer-center bg-slate-50 dark:bg-[#1e1f24] text-primary-content dark:text-gray-200 p-10">
         <div className="flex flex-col md:flex-row justify-between px-20 w-full">
           <aside>
             <p className="text-gray-500 dark:text-gray-200">
@@ -52,7 +52,7 @@ const Footer = () => {
             <div></div>
           </nav>
         </div>
-        <p className="mt-10 text-gray-500 dark:text-gray-400">
+        <p className="mt-10 text-xs text-gray-500 dark:text-gray-400">
           Copyright © {new Date().getFullYear()}, Dream Jobs - All right
           reserved.
         </p>

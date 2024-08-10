@@ -96,7 +96,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="min-w-full z-10 bg-gray-100 dark:bg-[#3c4853] flex justify-between pr-3 pl-4 lg:px-8 py-3">
+      <nav className="min-w-full fixed top-0 z-10 bg-blue-100 dark:bg-[#3c4853] flex justify-between pr-3 pl-4 lg:px-8 py-3">
         {/* Nav Start */}
         <div>
           <Link to="/">
