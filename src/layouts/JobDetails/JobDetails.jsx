@@ -39,7 +39,7 @@ const JobDetails = () => {
       {!job ? (
         <span className="loading loading-spinner loading-lg"></span>
       ) : (
-        <div className="container mt-4 text-gray-600 dark:text-gray-300 drop-shadow-md bg-sky-50 min-h-screen dark:bg-[#202127] py-5 rounded-md mb-10 md:w-5/6 lg:w-4/6 mx-auto">
+        <div className="container mt-4 text-gray-600 dark:text-gray-300 drop-shadow-md bg-sky-50 min-h-screen dark:bg-[#202127] py-5 rounded-md mb-5 md:w-5/6 lg:w-4/6 mx-auto">
           <div
             className="flex flex-col w-5/6 mx-auto lg:items-center lg:flex-row gap-x-2 lg:w-5/6 justify-center my-3"
             key={job._id}

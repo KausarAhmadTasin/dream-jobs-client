@@ -7,7 +7,7 @@ const Footer = () => {
       <footer className="footer  footer-center bg-slate-50 dark:bg-[#1e1f24] text-primary-content dark:text-gray-200 p-10">
         <div className="flex flex-col gap-y-10 content-center items-center md:flex-row justify-between md:px-20 w-full">
           <aside>
-            <p className="text-gray-500 dark:text-gray-200">
+            <div className="text-gray-500 dark:text-gray-200">
               <div>
                 <Link to="/">
                   {" "}
@@ -17,9 +17,12 @@ const Footer = () => {
                   </h2>
                 </Link>
               </div>
-              <br />
-              Providing reliable jobs since 2024
-            </p>
+
+              <p className="mt-2 text-gray-500 dark:text-gray-300">
+                {" "}
+                Providing reliable jobs since 2024
+              </p>
+            </div>
           </aside>
           <nav>
             <div className="grid grid-flow-col gap-4">
