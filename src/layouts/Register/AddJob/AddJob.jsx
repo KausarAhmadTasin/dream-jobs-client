@@ -1,14 +1,19 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
+import AuthContext from "../../../provider/AuthProvider/AuthContex";
 const AddJob = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const { user } = useContext(AuthContext);
+  const { displayName, email } = user;
 
   const handleAddJobSubmit = async (data) => {
     try {
@@ -107,7 +112,9 @@ const AddJob = () => {
             <input
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Employer"
+              value={displayName}
               {...register("employer", { required: true })}
+              readOnly
             />
             {errors.employer && (
               <div>
@@ -123,6 +130,8 @@ const AddJob = () => {
               type="email"
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md bg-white dark:bg-slate-50"
               placeholder="Employer Email"
+              value={email}
+              readOnly
               {...register("employer_email", { required: true })}
             />
             {errors.employer_email && (

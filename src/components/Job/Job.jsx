@@ -8,7 +8,7 @@ const Job = ({ jobs }) => {
       <div>
         {jobs.map((job) => (
           <li
-            className="flex flex-col bg-white dark:bg-[#18181b] md:flex-row w-3/4 hover-scale hover:shadow-md hover:cursor-pointer rounded-sm mx-auto border my-3 p-2"
+            className="flex flex-col bg-white dark:bg-[#18181b] md:flex-row w-3/4 hover-scale hover:shadow-md  rounded-sm mx-auto border my-3 p-2"
             key={job._id}
           >
             <div>
