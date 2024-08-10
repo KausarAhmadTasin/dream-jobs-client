@@ -10,7 +10,7 @@ const Jobs = () => {
   const totalCount = useLoaderData();
   const jobsPerPage = 20;
   const numberOfPages = Math.ceil(totalCount?.count / jobsPerPage);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const pages = [...Array(numberOfPages).keys()];
 
@@ -18,17 +18,21 @@ const Jobs = () => {
     if (jobs.length !== 0) {
       setLoading(false);
     }
-    axios.get("http://localhost:5000/jobs").then((res) => setJobs(res.data));
-  }, [jobs.length]);
+    axios
+      .get(`http://localhost:5000/jobs?page=${currentPage}&size=${jobsPerPage}`)
+      .then((res) => setJobs(res.data));
+  }, [jobs.length, currentPage, jobsPerPage]);
 
   const hanglePrevClick = () => {
-    if (currentPage > 1) {
+    if (currentPage > 0) {
       setCurrentPage(currentPage - 1);
     }
   };
 
+  console.log(jobs);
+
   const hangleNextClick = () => {
-    if (currentPage < pages.length) {
+    if (currentPage < pages.length - 1) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -38,7 +42,7 @@ const Jobs = () => {
       {loading ? (
         <span className="loading min-h-screen dark:bg-[#1A1B1F] pt-40 loading-spinner loading-lg"></span>
       ) : (
-        <div className="container mx-auto bg-sky-50 dark:bg-[#1A1B1F] pb-6">
+        <div className="container mx-auto bg-sky-50 rounded-lg mb-16 mt-8 dark:bg-[#1A1B1F] pb-6">
           <div className="flex w-3/4 mx-auto gap-x-4 mt-3 mb-6 justify-between items-center">
             {" "}
             <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mt-6 mb-6 underline underline-offset-[10px] decoration-dashed decoration-orange-400">
@@ -60,7 +64,7 @@ const Jobs = () => {
           </div>
 
           {/* Jobs Table */}
-          <div>
+          <div className=" min-h-screen">
             {
               <ul className="container mx-auto">
                 <Job jobs={jobs} />
@@ -77,15 +81,15 @@ const Jobs = () => {
 
             {pages.map((page) => (
               <button
-                onClick={() => setCurrentPage(page + 1)}
+                onClick={() => setCurrentPage(page)}
                 className={
-                  currentPage === page + 1
+                  currentPage === page
                     ? `btn mr-1 border-none bg-orange-500 text-white`
                     : `btn mr-1 border-none hover:bg-sky-300 bg-sky-400 text-white`
                 }
                 key={page}
               >
-                {page + 1}
+                {page}
               </button>
             ))}
 
