@@ -21,13 +21,15 @@ const Job = ({ jobs }) => {
               </h3>
 
               <p>
-                <span className="text-gray-400 font-medium">Company: </span>
-                <span className="font-medium text-gray-500">{job.company}</span>
+                <span className="text-gray-400  font-medium">Company: </span>
+                <span className="font-medium text-gray-500 dark:text-gray-300">
+                  {job.company}
+                </span>
               </p>
 
               <p className="md:flex-grow">
-                <span className="text-gray-400 font-medium">Salary: </span>
-                <span className="font-medium text-gray-500">
+                <span className="text-gray-400  font-medium">Salary: </span>
+                <span className="font-medium text-gray-500 dark:text-gray-300">
                   {job.salary_min}-{job.salary_max}
                   <span className="text-base font-medium"> ৳</span>
                 </span>
@@ -41,16 +43,16 @@ const Job = ({ jobs }) => {
 
             <div className="mr-4 md:text-end flex flex-col">
               <p>
-                <span className="text-gray-400 font-medium">
+                <span className="text-gray-400  font-medium">
                   Number of applicants:{" "}
                 </span>
-                <span className="font-medium text-gray-500">
+                <span className="font-medium text-gray-500 dark:text-gray-300">
                   {job.applicants}
                 </span>
               </p>
 
               <p className="mt-3 flex-grow text-orange-600">
-                <span className="text-gray-500 font-medium">Deadline: </span>
+                <span className="text-gray-400 font-medium">Deadline: </span>
                 <span className="font-medium">{job.deadline}</span>
               </p>
 

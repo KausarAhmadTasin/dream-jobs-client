@@ -10,7 +10,10 @@ const Jobs = () => {
   const totalCount = useLoaderData();
   const jobsPerPage = 20;
   const numberOfPages = Math.ceil(totalCount?.count / jobsPerPage);
-  const [currentPage, setCurrentPage] = useState(0);
+
+  const [currentPage, setCurrentPage] = useState(
+    parseInt(localStorage.getItem("currentPage")) || 0
+  );
 
   const pages = [...Array(numberOfPages).keys()];
 
@@ -22,6 +25,10 @@ const Jobs = () => {
       .get(`http://localhost:5000/jobs?page=${currentPage}&size=${jobsPerPage}`)
       .then((res) => setJobs(res.data));
   }, [jobs.length, currentPage, jobsPerPage]);
+
+  useEffect(() => {
+    localStorage.setItem("currentPage", currentPage);
+  }, [currentPage]);
 
   const hanglePrevClick = () => {
     if (currentPage > 0) {
