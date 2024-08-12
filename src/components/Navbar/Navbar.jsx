@@ -5,6 +5,7 @@ import AuthContext from "../../provider/AuthProvider/AuthContex";
 import "react-tooltip/dist/react-tooltip.css";
 import { Tooltip } from "react-tooltip";
 import { toast } from "react-toastify";
+import { IoMdClose } from "react-icons/io";
 
 const Navbar = () => {
   const [isDropOpen, setIsDropOpen] = useState(false);
@@ -74,21 +75,31 @@ const Navbar = () => {
   );
 
   const navLinksDrawer = (
-    <ul className="space-y-3">
+    <ul className="">
       <li
-        className="cursor-pointer lg:border-none"
+        className="cursor-pointer flex text-2xl justify-end mb-4 lg:border-none"
         onClick={handleDropdownClick}
       >
-        X
+        <IoMdClose />
       </li>
       <Link to="/">
-        <li className="cursor-pointer lg:border-none hover:underline hover:underline-offset-4 ">
+        <li className="cursor-pointer mb-4 font-light lg:border-none hover:underline hover:underline-offset-4 ">
           Home
         </li>
       </Link>
       <Link to="/jobs">
-        <li className="cursor-pointer lg:border-none hover:underline hover:underline-offset-4 ">
+        <li className="cursor-pointer mb-4 font-light lg:border-none hover:underline hover:underline-offset-4 ">
           Jobs
+        </li>
+      </Link>
+      <Link to="/addJobs">
+        <li className="cursor-pointer mb-4 font-light lg:border-none hover:underline hover:underline-offset-4 ">
+          Add Jobs
+        </li>
+      </Link>
+      <Link to="/myJobs">
+        <li className="cursor-pointer mb-4 font-light lg:border-none hover:underline hover:underline-offset-4 ">
+          My Jobs
         </li>
       </Link>
     </ul>
@@ -205,7 +216,7 @@ const Navbar = () => {
 
         {/* Dropdown */}
         {isDropOpen ? (
-          <div className="absolute text-right min-h-screen rounded-s-sm md:w-1/3 lg:hidden py-4 px-8 w-2/3 z-10 bg-slate-200 right-0 top-0 duration-300">
+          <div className="absolute text-left min-h-screen rounded-s-sm md:w-1/3 lg:hidden py-4 px-8 w-2/3 z-10 bg-sky-100 drop-shadow-md dark:bg-[#26272c] opacity-95 dark:text-white text-gray-700 text-xl right-0 top-0 duration-300">
             {navLinksDrawer}
           </div>
         ) : (
