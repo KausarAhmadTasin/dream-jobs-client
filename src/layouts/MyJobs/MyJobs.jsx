@@ -52,6 +52,8 @@ const MyJobs = () => {
     }
   };
 
+  const crudOptions = true;
+
   return (
     <>
       {loading ? (
@@ -76,7 +78,7 @@ const MyJobs = () => {
           {/* Jobs Table */}
           <div className="min-h-screen">
             <ul className="container mx-auto">
-              <Job jobs={jobs} />
+              <Job jobs={jobs} crudOptions={crudOptions} />
             </ul>
           </div>
 

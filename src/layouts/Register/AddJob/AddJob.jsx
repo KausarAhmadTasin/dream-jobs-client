@@ -368,17 +368,17 @@ const AddJob = () => {
         <div className="flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-4  mt-4">
           <div className="lg:w-1/2 w-full md:w-2/3 ">
             <label className="block mb-2 text-gray-500 dark:text-gray-400">
-              Other Benifits
+              Other Benefits
             </label>
             <input
               className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md text-gray-600 bg-white dark:bg-slate-50"
-              placeholder="Other Benifits"
-              {...register("other_benifits", { required: true })}
+              placeholder="Other Benefits"
+              {...register("other_benefits", { required: true })}
             />
-            {errors.other_benifits && (
+            {errors.other_benefits && (
               <div>
                 <span className="text-red-500 text-sm">
-                  Other Benifits is required*
+                  Other Benefits is required*
                 </span>
               </div>
             )}
