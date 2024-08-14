@@ -10,8 +10,8 @@ const MyJobs = () => {
   const [totalCount, setTotalCount] = useState(0);
   const jobsPerPage = 20;
 
-  const [currentPage, setCurrentPage] = useState(
-    parseInt(localStorage.getItem("currentPage")) || 0
+  const [currentMyPage, setCurrentMyPage] = useState(
+    parseInt(localStorage.getItem("currentMyPage")) || 0
   );
 
   const numberOfPages = Math.ceil(totalCount / jobsPerPage);
@@ -27,28 +27,28 @@ const MyJobs = () => {
 
     axios
       .get(
-        `http://localhost:5000/jobs?email=${user?.email}&page=${currentPage}&size=${jobsPerPage}`
+        `http://localhost:5000/jobs?email=${user?.email}&page=${currentMyPage}&size=${jobsPerPage}`
       )
       .then((res) => {
         setJobs(res.data);
       });
     setLoading(false);
-  }, [currentPage, jobsPerPage, user?.email]);
+  }, [currentMyPage, jobsPerPage, user?.email]);
 
   // Pagination localstorage
   useEffect(() => {
-    localStorage.setItem("currentPage", currentPage);
-  }, [currentPage]);
+    localStorage.setItem("currentMyPage", currentMyPage);
+  }, [currentMyPage]);
 
   const handlePrevClick = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
+    if (currentMyPage > 0) {
+      setCurrentMyPage(currentMyPage - 1);
     }
   };
 
   const handleNextClick = () => {
-    if (currentPage < pages.length - 1) {
-      setCurrentPage(currentPage + 1);
+    if (currentMyPage < pages.length - 1) {
+      setCurrentMyPage(currentMyPage + 1);
     }
   };
 
@@ -94,11 +94,11 @@ const MyJobs = () => {
             {pages.map((page) => (
               <button
                 onClick={() => {
-                  setCurrentPage(page);
+                  setCurrentMyPage(page);
                   window.scrollTo({ top: 0, behavior: "smooth" });
                 }}
                 className={
-                  currentPage === page
+                  currentMyPage === page
                     ? `btn mr-1 border-none w-2 md:w-fit bg-orange-500 text-white`
                     : `btn mr-1 border-none w-2 md:w-fit hover:bg-sky-300 bg-sky-400 text-white`
                 }

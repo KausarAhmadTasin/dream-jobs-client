@@ -14,7 +14,6 @@ const EditJobModal = ({ handleEditSubmit, editingJobId }) => {
         .then((res) => setJob(res.data));
     }
   }, [editingJobId]);
-  console.log(editingJobId);
   return (
     <div>
       {/*  

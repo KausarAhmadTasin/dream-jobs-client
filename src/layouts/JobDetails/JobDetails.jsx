@@ -1,37 +1,107 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import AuthContext from "../../provider/AuthProvider/AuthContex";
 
 const JobDetails = () => {
   const job = useLoaderData();
 
-  const handleApplyClick = () => {
-    axios
-      .patch(`http://localhost:5000/jobs/${job._id}/apply`)
-      .then((res) => {
-        if (res.data.modifiedCount > 0) {
-          Swal.fire({
-            title: "Good job!",
-            text: "Applied for the job!",
-            icon: "success",
-            customClass: {
-              popup: "bg-sky-100",
-              confirmButton: "bg-green-500",
-            },
-          });
-        }
-      })
-      .catch(() => {
+  const { user } = useContext(AuthContext);
+  const { displayName, email } = user;
+
+  const currentDate = new Date();
+  const deadlineDate = new Date(job.deadline);
+  const isDeadlineOver = currentDate > deadlineDate;
+
+  const handleApplySubmit = async (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+
+    const applicant_name = form.applicant_name.value;
+    const applicant_email = form.applicant_email.value;
+    const resume_link = form.resume_link.value;
+    const employer_email = job.employer_email;
+    const job_title = job.job_title;
+    const job_id = job._id;
+    const company = job.company;
+
+    const application_info = {
+      applicant_name,
+      applicant_email,
+      resume_link,
+      employer_email,
+      job_title,
+      job_id,
+      company,
+    };
+
+    try {
+      const res = await axios.post(
+        `http://localhost:5000/application`,
+        application_info
+      );
+      if (res.data.insertedId) {
+        await axios.patch(`http://localhost:5000/jobs/${job._id}/apply`);
+
+        document.getElementById("my_modal_1").close();
+
         Swal.fire({
-          title: "Oops!",
-          text: "Failed to apply!",
-          icon: "error",
+          title: "Applied Successfully!",
+          icon: "success",
           customClass: {
-            popup: "bg-sky-100",
-            confirmButton: "bg-blue-400",
+            popup: "bg-sky-100 dark:bg-[#3C4853]",
+            confirmButton: "bg-green-500",
+            title: "dark:text-gray-100",
           },
+        }).then(() => {
+          window.location.reload();
         });
+      }
+    } catch (error) {
+      document.getElementById("my_modal_1").close();
+      Swal.fire({
+        title: "Application failed!",
+        icon: "error",
+        customClass: {
+          popup: "bg-sky-100 dark:bg-[#3C4853]",
+          confirmButton: "bg-green-500",
+          title: "dark:text-gray-100",
+        },
       });
+      console.error("Error applying for the job:", error);
+    }
+  };
+
+  const handleApplyClick = () => {
+    if (email === job.employer_email) {
+      Swal.fire({
+        title: "Oops!",
+        html: "<span style='color: #0EA5E9;'>You cannot apply for your own job!</span>",
+        icon: "error",
+        customClass: {
+          popup: "bg-sky-100 dark:bg-[#3C4853]",
+          confirmButton: "bg-green-500",
+          title: "dark:text-gray-100",
+        },
+      });
+      return;
+    } else if (isDeadlineOver) {
+      Swal.fire({
+        title: "Deadline Passed!",
+        html: "<span style='color: #0EA5E9;'>You cannot apply as the deadline has passed.</span>",
+        icon: "error",
+        customClass: {
+          popup: "bg-sky-100 dark:bg-[#3C4853]",
+          confirmButton: "bg-green-500",
+          title: "dark:text-gray-100",
+        },
+      });
+      return;
+    } else {
+      document.getElementById("my_modal_1").showModal();
+    }
   };
 
   return (
@@ -83,7 +153,9 @@ const JobDetails = () => {
                 <td className="font-medium text-orange-600">{job.deadline}</td>
                 <td className="font-semibold absolute bottom-0 right-8">
                   <button
-                    onClick={handleApplyClick}
+                    onClick={() => {
+                      handleApplyClick();
+                    }}
                     className="px-6 btn bg-[#55d666] border-none hover:bg-[#5fda70] text-lg text-white rounded-md"
                   >
                     Apply
@@ -172,6 +244,77 @@ const JobDetails = () => {
               </tr>
             </table>
           </div>
+
+          {/* 
+          ----------------    Apply Modal   ---------------------
+          
+          */}
+          <dialog id="my_modal_1" className="modal ">
+            <div className="modal-box dark:bg-[#2a3138] bg-sky-100">
+              <form onSubmit={handleApplySubmit}>
+                {/* 1st row */}
+                <div className="flex flex-col md:flex-row gap-4 md:gap-8 lg:gap-4">
+                  <div className="lg:w-1/2 w-full md:w-2/3">
+                    <label className="block mb-2 text-gray-500 dark:text-gray-400">
+                      Name
+                    </label>
+                    <input
+                      className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md text-gray-600 bg-white dark:bg-slate-50"
+                      placeholder="Name"
+                      value={displayName}
+                      name="applicant_name"
+                      required
+                      readOnly
+                    />
+                  </div>
+                  <div className="lg:w-1/2 w-full md:w-2/3">
+                    <label className="block mb-2 text-gray-500 dark:text-gray-400">
+                      Email Address
+                    </label>
+                    <input
+                      type="text"
+                      className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md text-gray-600 bg-white dark:bg-slate-50"
+                      placeholder="Email Address"
+                      value={email}
+                      name="applicant_email"
+                      required
+                      readOnly
+                    />
+                  </div>
+                </div>
+
+                {/* 2nd row */}
+                <div className="mt-4">
+                  <div className=" w-full">
+                    <label className="block mb-2 text-gray-500 dark:text-gray-400">
+                      Resume Link
+                    </label>
+                    <input
+                      className="w-full p-2 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent rounded-md text-gray-600 bg-white dark:bg-slate-50"
+                      placeholder="Name"
+                      name="resume_link"
+                      required
+                    />
+                  </div>
+                </div>
+                <div>
+                  <input
+                    type="submit"
+                    value="Submit Application"
+                    className="bg-green-600 btn outline-none mt-4 w-full text-base dark:bg-green-500 dark:hover:bg-green-400 hover:bg-green-500 border-none text-white"
+                  />
+                </div>
+              </form>
+              <div className="modal-action ">
+                <form method="dialog">
+                  {/* if there is a button in form, it will close the modal */}
+                  <button className="btn bg-red-600 border-none hover:bg-rose-500 text-white outline-none ">
+                    Cancel
+                  </button>
+                </form>
+              </div>
+            </div>
+          </dialog>
         </div>
       )}
     </>

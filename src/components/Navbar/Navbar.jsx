@@ -164,6 +164,17 @@ const Navbar = () => {
               My Job
             </li>
           </Link>
+          <Link to="/appliedJobs">
+            <li
+              className={`cursor-pointer text-gray-600 dark:text-gray-200 lg:border-none hover:text-sky-500 ${
+                location.pathname === "/appliedJobs"
+                  ? " underline underline-offset-4 decoration-2 decoration-sky-400"
+                  : ""
+              }`}
+            >
+              Applied Job
+            </li>
+          </Link>
         </ul>
 
         {/* Nav End */}
@@ -192,7 +203,7 @@ const Navbar = () => {
                 />
                 <p
                   onClick={handleLogout}
-                  className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3"
+                  className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3"
                 >
                   Logout
                 </p>
@@ -200,7 +211,7 @@ const Navbar = () => {
             ) : (
               <Link to="login">
                 {" "}
-                <p className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:scale-x-105 hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3">
+                <p className="font-bold text-sky-500 dark:text-sky-400 cursor-pointer hover:dark:text-sky-300 hover:text-sky-400 lg:mr-4 mr-3">
                   Login
                 </p>
               </Link>

@@ -10,12 +10,11 @@ import EditJobModal from "../Modal/EditJobModal";
 
 const Job = ({ jobs, crudOptions }) => {
   const [editingJobId, setEditingJobId] = useState(null);
-  const [editJob, setEditJob] = useState(null);
 
   const handleDeleteClcik = (id) => {
     Swal.fire({
       title: "Delete job?",
-      html: "<span style='color: #E5E7EB;'>You won't be able to revert this!</span>",
+      html: "<span style='color: #0EA5E9;'>You won't be able to revert this!</span>",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -193,7 +192,6 @@ const Job = ({ jobs, crudOptions }) => {
                       <FaRegEdit
                         onClick={() => {
                           setEditingJobId(job._id);
-                          setEditJob(job);
                           document.getElementById("my_modal_4").showModal();
                         }}
                         data-tooltip-id="my-tooltip"
