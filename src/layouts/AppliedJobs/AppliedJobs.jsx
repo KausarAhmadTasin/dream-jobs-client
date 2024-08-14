@@ -1,18 +1,20 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import AuthContext from "../../provider/AuthProvider/AuthContex";
 
 const AppliedJobs = () => {
   const [appliedJobs, setAppliedJobs] = useState([]);
 
+  const { user } = useContext(AuthContext);
+  const { email } = user;
+
   // Applied jobs fetching
   useEffect(() => {
     axios
-      .get(
-        `http://localhost:5000/application?applicant_email=kausarahmadtasinpub@gmail.com`
-      )
+      .get(`http://localhost:5000/application?applicant_email=${email}`)
       .then((res) => setAppliedJobs(res.data));
-  }, []);
+  }, [email]);
 
   const handleCancelApplication = (id) => {
     console.log("clicked", id);

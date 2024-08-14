@@ -175,6 +175,17 @@ const Navbar = () => {
               Applied Job
             </li>
           </Link>
+          <Link to="/candidateList">
+            <li
+              className={`cursor-pointer text-gray-600 dark:text-gray-200 lg:border-none hover:text-sky-500 ${
+                location.pathname === "/candidateList"
+                  ? " underline underline-offset-4 decoration-2 decoration-sky-400"
+                  : ""
+              }`}
+            >
+              Candidate List
+            </li>
+          </Link>
         </ul>
 
         {/* Nav End */}
