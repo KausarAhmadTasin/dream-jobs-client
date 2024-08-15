@@ -1,4 +1,21 @@
+import axios from "axios";
+import { useState } from "react";
+import Job from "../Job/Job";
+
 const Hero = () => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = () => {
+    if (!searchTerm.trim()) {
+      return;
+    }
+
+    axios.get(`http://localhost:5000/jobs?title=${searchTerm}`).then((res) => {
+      setSearchResults(res.data);
+    });
+  };
+
   return (
     <div>
       <header>
@@ -9,8 +26,16 @@ const Hero = () => {
               type="text"
               className="rounded-md h-full py-2 border focus:outline-none focus:shadow-md px-3 flex items-center text-gray-600 w-full dark:bg-slate-50 bg-white"
               placeholder="Search by job title"
+              value={searchTerm}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+              onKeyDown={(e) => e.key === "Enter" && handleSearch()}
             />
-            <div className="bg-sky-400 h-full rounded-e-md py-2 md:px-3 px-2 flex items-center text-white font-semibold top-0 -right-1 absolute cursor-pointer">
+            <div
+              className="bg-sky-400 h-full rounded-e-md py-2 md:px-3 px-2 flex items-center text-white font-semibold top-0 -right-1 absolute cursor-pointer"
+              onClick={handleSearch}
+            >
               <p>Search Job</p>
             </div>
           </div>
@@ -30,6 +55,21 @@ const Hero = () => {
           </div>
         </div>
       </header>
+
+      {searchResults.length > 0 && (
+        <div className="mt-10">
+          <h3 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-10 underline underline-offset-[10px] decoration-dashed decoration-orange-400 text-center">
+            Searched Jobs
+          </h3>
+          {searchResults.length > 0 ? (
+            <ul>
+              <Job jobs={searchResults} />
+            </ul>
+          ) : (
+            <p className="text-center mt-10">No Searched job!</p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

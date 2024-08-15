@@ -16,39 +16,54 @@ const CandidateList = () => {
   }, [email]);
 
   const handleRejectApplication = (id) => {
-    console.log("clicked", id);
-    axios
-      .delete(`http://localhost:5000/application/${id}`)
-      .then((res) => {
-        if (res.data.deletedCount) {
-          Swal.fire({
-            title: "Applicant Rejected Successfully!",
-            icon: "success",
-            customClass: {
-              popup: "bg-sky-100 dark:bg-[#3C4853]",
-              confirmButton: "bg-green-500",
-              title: "dark:text-gray-100",
-            },
-          }).then(() => {
-            // Refresh the job list after deletion
-            setCandidateList((prevJobs) =>
-              prevJobs.filter((job) => job._id !== id)
-            );
+    Swal.fire({
+      title: "Reject Applicant?",
+      icon: "warning",
+      showCancelButton: true,
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes!",
+      cancelButtonText: "No",
+      customClass: {
+        popup: "bg-sky-100 dark:bg-[#3C4853]",
+        confirmButton: "bg-red-600",
+        title: "dark:text-gray-100",
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:5000/application/${id}`)
+          .then((res) => {
+            if (res.data.deletedCount) {
+              Swal.fire({
+                title: "Applicant Rejected!",
+                icon: "success",
+                customClass: {
+                  popup: "bg-sky-100 dark:bg-[#3C4853]",
+                  confirmButton: "bg-green-500",
+                  title: "dark:text-gray-100",
+                },
+              }).then(() => {
+                // Refresh the job list after deletion
+                setCandidateList((prevJobs) =>
+                  prevJobs.filter((job) => job._id !== id)
+                );
+              });
+            }
+          })
+          .catch((err) => {
+            Swal.fire({
+              title: "Rejection failed!",
+              icon: "error",
+              customClass: {
+                popup: "bg-sky-100 dark:bg-[#3C4853]",
+                confirmButton: "bg-green-500",
+                title: "dark:text-gray-100",
+              },
+            });
+            console.error("Error cancelling the application:", err);
           });
-        }
-      })
-      .catch((err) => {
-        Swal.fire({
-          title: "Rejection failed!",
-          icon: "error",
-          customClass: {
-            popup: "bg-sky-100 dark:bg-[#3C4853]",
-            confirmButton: "bg-green-500",
-            title: "dark:text-gray-100",
-          },
-        });
-        console.error("Error cancelling the application:", err);
-      });
+      }
+    });
   };
 
   return (

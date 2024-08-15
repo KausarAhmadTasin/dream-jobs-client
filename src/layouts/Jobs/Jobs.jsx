@@ -57,26 +57,10 @@ const Jobs = () => {
         </div>
       ) : (
         <div className="md:container mx-4 md:mx-auto pt-3 bg-sky-100 rounded-lg mb-16 mt-4 dark:bg-[#1A1B1F] pb-6">
-          <div className="flex flex-col md:flex-row w-3/4 mx-auto gap-x-4 mb-6 justify-between items-center">
-            {" "}
-            <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mt-6 mb-6 underline underline-offset-[10px] decoration-dashed decoration-orange-400">
-              All Jobs
-            </h1>
-            {/* 
-              Search input 
-          */}
-            <div className="relative text-sm md:text-base md:w-1/2 w-full shadow-2xl">
-              <input
-                type="text"
-                className="rounded-md h-full  py-2 border focus:outline-none focus:shadow-md px-3 flex items-center text-gray-600 w-full dark:bg-slate-50 bg-white"
-                placeholder="Search by job title"
-              />
-              <div className="bg-sky-400 h-full rounded-e-md py-2 md:px-3 px-2 flex items-center text-white font-semibold top-0 -right-1 absolute cursor-pointer">
-                <p>Search Job</p>
-              </div>
-            </div>
-          </div>
-
+          {" "}
+          <h1 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-10 underline underline-offset-[10px] text-center decoration-dashed decoration-orange-400">
+            All Jobs
+          </h1>
           {/* Jobs Table */}
           <div className=" min-h-screen">
             {
