@@ -42,7 +42,7 @@ Dream Jobs is a dynamic and responsive web application designed for job seekers 
 
 1. Clone the repository:
     ```bash
-    git clone [https://github.com/KausarAhmadTasin/dream-jobs-client](https://github.com/KausarAhmadTasin/dream-jobs-client)
+    git clone https://github.com/KausarAhmadTasin/dream-jobs-client
     ```
 
 2. Install dependencies:
