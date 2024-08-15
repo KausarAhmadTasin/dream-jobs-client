@@ -27,8 +27,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center bg-slate-50 py-24 lg:py-0 lg:min-h-screen items-center ">
-      <div className="lg:w-1/3 border bg-white w-11/12 md:w-3/4 border-rose-200 rounded-md">
+    <div className="flex justify-center bg-white dark:bg-[#1A1B1F] py-24 lg:py-0 lg:min-h-screen items-center ">
+      <div className="lg:w-1/3 border bg-white dark:bg-[#1A1B1F] w-11/12 md:w-3/4 border-rose-200 rounded-md">
         <form onSubmit={handleLogin} className="card-body">
           <div className="form-control">
             <label className="label">
@@ -37,7 +37,7 @@ const Login = () => {
             <input
               type="email"
               placeholder="a@b.com"
-              className="input focus:outline-none focus:border-sky-400 border-slate-300"
+              className="input bg-white text-gray-600 dark:text-gray-300 dark:bg-[#292a2e] focus:outline-none focus:border-sky-400 border-slate-300"
               required
               autoFocus
               name="email"
@@ -52,7 +52,7 @@ const Login = () => {
                 <input
                   type={textPassword ? "" : "password"}
                   placeholder="Password"
-                  className="input focus:outline-none focus:border-sky-400 w-full border-slate-300"
+                  className="input bg-white text-gray-600 dark:text-gray-300 dark:bg-[#292a2e]  focus:outline-none focus:border-sky-400 w-full border-slate-300"
                   required
                   name="password"
                 />
@@ -64,18 +64,20 @@ const Login = () => {
                 </div>
               </div>
             </div>
-            <label className="label label-text-alt justify-start">
+            <label className="label label-text-alt justify-start text-gray-600 dark:text-gray-300">
               Don&apos;t have an account?{" "}
               <Link
                 to="/register"
-                className=" link link-hover decoration-blue-600"
+                className=" link link-hover dark:decoration-blue-300 decoration-blue-600"
               >
-                <span className="text-blue-600 ml-1">Register</span>
+                <span className="text-blue-600 dark:text-sky-400 ml-1">
+                  Register
+                </span>
               </Link>
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn bg-[#57d367] hover:bg-[#65e476] text-white text-lg">
+            <button className="btn border-none bg-[#57d367] hover:bg-[#65e476] text-white text-lg">
               Login
             </button>
           </div>

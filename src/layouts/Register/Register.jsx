@@ -44,8 +44,8 @@ const Register = () => {
 
   return (
     <div>
-      <div className="hero bg-slate-50  min-h-screen">
-        <div className="card border rounded-mdborder-gray-200 bg-base-100 w-11/12 md:w-3/4 lg:w-1/3">
+      <div className="hero bg-white dark:bg-[#1A1B1F]   min-h-screen">
+        <div className="card border-rose-200 bg-white dark:bg-[#1A1B1F]  border my-10 rounded-mdborder-gray-200 w-11/12 md:w-3/4 lg:w-1/3">
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -54,7 +54,7 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="Abdul Karim"
-                className="input focus:outline-none focus:border-sky-400 border-slate-300"
+                className="input bg-white text-gray-600 dark:text-gray-300 dark:bg-[#292a2e]  focus:outline-none focus:border-sky-400 border-slate-300"
                 required
                 autoFocus
                 name="name"
@@ -67,7 +67,7 @@ const Register = () => {
               <input
                 type="email"
                 placeholder="a@b.com"
-                className="input focus:outline-none focus:border-sky-400 border-slate-300"
+                className="input bg-white text-gray-600 dark:text-gray-300 dark:bg-[#292a2e]  focus:outline-none focus:border-sky-400 border-slate-300"
                 required
                 name="email"
               />
@@ -79,7 +79,7 @@ const Register = () => {
               <input
                 type="text"
                 placeholder="photo.com"
-                className="input focus:outline-none focus:border-sky-400 border-slate-300"
+                className="input bg-white text-gray-600 dark:text-gray-300 dark:bg-[#292a2e]  focus:outline-none focus:border-sky-400 border-slate-300"
                 required
                 name="photo"
               />
@@ -92,7 +92,7 @@ const Register = () => {
                 <input
                   type={textPassword ? "" : "password"}
                   placeholder="Password"
-                  className="input focus:outline-none w-full focus:border-sky-400 border-slate-300"
+                  className="input bg-white text-gray-600 dark:text-gray-300 dark:bg-[#292a2e]  focus:outline-none w-full focus:border-sky-400 border-slate-300"
                   required
                   name="password"
                 />
@@ -106,13 +106,15 @@ const Register = () => {
                   <p className="text-red-700 text-sm mt-1">{passwordError}</p>
                 )}
               </div>
-              <label className="label label-text-alt justify-start">
+              <label className="label label-text-alt justify-start text-gray-600 dark:text-gray-300">
                 Already have an account?{" "}
                 <Link
                   to="/login"
-                  className=" link link-hover decoration-blue-600"
+                  className="link link-hover decoration-blue-600 dark:decoration-blue-300"
                 >
-                  <span className="text-blue-600 ml-1">Login</span>
+                  <span className="dark:text-sky-400  text-blue-600 ml-1">
+                    Login
+                  </span>
                 </Link>
               </label>
             </div>
@@ -121,7 +123,7 @@ const Register = () => {
               <input
                 type="submit"
                 value="Register"
-                className="btn bg-[#57d367] hover:bg-[#65e476] text-white text-lg"
+                className="btn border-none bg-[#57d367] hover:bg-[#65e476] text-white text-lg"
               ></input>
             </div>
             <SocialLinks />

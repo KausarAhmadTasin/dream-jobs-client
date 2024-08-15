@@ -102,6 +102,16 @@ const Navbar = () => {
           My Jobs
         </li>
       </Link>
+      <Link to="/appliedJobs">
+        <li className="cursor-pointer mb-4 font-light lg:border-none hover:underline hover:underline-offset-4 ">
+          Applied Jobs
+        </li>
+      </Link>
+      <Link to="/candidateList">
+        <li className="cursor-pointer mb-4 font-light lg:border-none hover:underline hover:underline-offset-4 ">
+          Candiate List
+        </li>
+      </Link>
     </ul>
   );
 

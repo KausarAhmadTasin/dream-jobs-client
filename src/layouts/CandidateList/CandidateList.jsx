@@ -11,7 +11,9 @@ const CandidateList = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/application?employer_email=${email}`)
+      .get(`http://localhost:5000/application?employer_email=${email}`, {
+        withCredentials: true,
+      })
       .then((res) => setCandidateList(res.data));
   }, [email]);
 
@@ -67,14 +69,14 @@ const CandidateList = () => {
   };
 
   return (
-    <div className="min-h-screen mt-5 md:container md:mx-auto">
+    <div className="min-h-screen mt-5 overflow-x-auto md:container md:mx-auto">
       <h3 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-3 underline underline-offset-[10px] decoration-dashed decoration-orange-400 text-center">
         Applicants List
       </h3>
 
       {candidateList.length > 0 ? (
-        <div className="overflow-x-auto w-full mx-2">
-          <table className="min-w-[800px] text-gray-600 dark:text-gray-300 border-collapse text-center border mt-5 overflow-x-auto">
+        <div className="overflow-x-auto mx-2">
+          <table className=" text-gray-600 dark:text-gray-300 border-collapse text-center border mt-5 overflow-x-auto">
             <thead>
               <tr>
                 <th className="border px-2 py-1">Name</th>

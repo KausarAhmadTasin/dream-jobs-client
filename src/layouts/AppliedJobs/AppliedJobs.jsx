@@ -12,7 +12,9 @@ const AppliedJobs = () => {
   // Applied jobs fetching
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/application?applicant_email=${email}`)
+      .get(`http://localhost:5000/application?applicant_email=${email}`, {
+        withCredentials: true,
+      })
       .then((res) => setAppliedJobs(res.data));
   }, [email]);
 
