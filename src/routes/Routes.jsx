@@ -25,7 +25,8 @@ const router = createBrowserRouter([
       {
         path: "/jobs",
         element: <Jobs />,
-        loader: () => fetch(`http://localhost:5000/jobsCount`),
+        loader: () =>
+          fetch(`https://dream-jobs-server-nine.vercel.app/jobsCount`),
       },
       {
         path: "/jobDetails/:id",
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
           </PrivateRoutes>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/jobs/${params.id}`),
+          fetch(`https://dream-jobs-server-nine.vercel.app/jobs/${params.id}`),
       },
       {
         path: "/myJobs",

@@ -22,12 +22,14 @@ const MyJobs = () => {
   // Fetch data
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/jobsCount?email=${user?.email}`)
+      .get(
+        `https://dream-jobs-server-nine.vercel.app/jobsCount?email=${user?.email}`
+      )
       .then((res) => setTotalCount(res.data.count));
 
     axios
       .get(
-        `http://localhost:5000/jobs?email=${user?.email}&page=${currentMyPage}&size=${jobsPerPage}`
+        `https://dream-jobs-server-nine.vercel.app/jobs?email=${user?.email}&page=${currentMyPage}&size=${jobsPerPage}`
       )
       .then((res) => {
         setJobs(res.data);

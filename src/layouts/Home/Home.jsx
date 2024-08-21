@@ -12,9 +12,13 @@ const Home = () => {
   const [jobs, setJobs] = useState([]);
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/logos`).then((res) => setLogos(res.data));
     axios
-      .get(`http://localhost:5000/jobs?type=${selectedType}`)
+      .get(`https://dream-jobs-server-nine.vercel.app/logos`)
+      .then((res) => setLogos(res.data));
+    axios
+      .get(
+        `https://dream-jobs-server-nine.vercel.app/jobs?type=${selectedType}`
+      )
       .then((res) => setJobs(res.data));
   }, [selectedType]);
 

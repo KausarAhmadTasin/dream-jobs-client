@@ -22,7 +22,9 @@ const Jobs = () => {
       setLoading(false);
     }
     axios
-      .get(`http://localhost:5000/jobs?page=${currentPage}&size=${jobsPerPage}`)
+      .get(
+        `https://dream-jobs-server-nine.vercel.app/jobs?page=${currentPage}&size=${jobsPerPage}`
+      )
       .then((res) => setJobs(res.data));
   }, [jobs.length, currentPage, jobsPerPage]);
 

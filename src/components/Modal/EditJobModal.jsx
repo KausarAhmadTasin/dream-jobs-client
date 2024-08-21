@@ -10,7 +10,7 @@ const EditJobModal = ({ handleEditSubmit, editingJobId }) => {
     if (editingJobId) {
       setJob(null);
       axios
-        .get(`http://localhost:5000/jobs/${editingJobId}`)
+        .get(`https://dream-jobs-server-nine.vercel.app/jobs/${editingJobId}`)
         .then((res) => setJob(res.data));
     }
   }, [editingJobId]);

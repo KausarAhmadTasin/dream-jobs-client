@@ -28,7 +28,7 @@ const Job = ({ jobs, crudOptions }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/myJobs/${id}`)
+          .delete(`https://dream-jobs-server-nine.vercel.app/myJobs/${id}`)
           .then((res) => {
             if (res.data.deletedCount > 0) {
               Swal.fire({
@@ -108,7 +108,7 @@ const Job = ({ jobs, crudOptions }) => {
     };
 
     axios
-      .put(`http://localhost:5000/myJobs/${jobId}`, newJob)
+      .put(`https://dream-jobs-server-nine.vercel.app/myJobs/${jobId}`, newJob)
       .then((response) => {
         if (response.data.modifiedCount > 0) {
           document.getElementById("my_modal_4").close();

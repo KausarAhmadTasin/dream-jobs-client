@@ -12,9 +12,12 @@ const AppliedJobs = () => {
   // Applied jobs fetching
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/application?applicant_email=${email}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://dream-jobs-server-nine.vercel.app/application?applicant_email=${email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => setAppliedJobs(res.data));
   }, [email]);
 
@@ -34,7 +37,7 @@ const AppliedJobs = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/application/${id}`)
+          .delete(`https://dream-jobs-server-nine.vercel.app/application/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
               Swal.fire({

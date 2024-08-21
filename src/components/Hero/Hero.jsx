@@ -11,9 +11,11 @@ const Hero = () => {
       return;
     }
 
-    axios.get(`http://localhost:5000/jobs?title=${searchTerm}`).then((res) => {
-      setSearchResults(res.data);
-    });
+    axios
+      .get(`https://dream-jobs-server-nine.vercel.app/jobs?title=${searchTerm}`)
+      .then((res) => {
+        setSearchResults(res.data);
+      });
   };
 
   return (

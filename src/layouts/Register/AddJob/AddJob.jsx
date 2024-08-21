@@ -17,8 +17,10 @@ const AddJob = () => {
 
   const handleAddJobSubmit = async (data) => {
     try {
-      const response = await axios.post("http://localhost:5000/jobs", data);
-      console.log(response.data);
+      const response = await axios.post(
+        "https://dream-jobs-server-nine.vercel.app/jobs",
+        data
+      );
       if (response.data.insertedId) {
         toast.success("Job post added!");
       }

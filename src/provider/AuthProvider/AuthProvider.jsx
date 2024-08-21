@@ -82,20 +82,25 @@ const AuthProvider = ({ children }) => {
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
       setUser(currentUser);
+
       setLoading(false);
 
       if (currentUser) {
         axios
-          .post(`http://localhost:5000/jwt`, loggedUser, {
+          .post(`https://dream-jobs-server-nine.vercel.app/jwt`, loggedUser, {
             withCredentials: true,
           })
           .then((res) => {
             console.log(res.data);
           });
       } else {
-        axios.post(`http://localhost:5000/logout`, loggedUser, {
-          withCredentials: true,
-        });
+        axios.post(
+          `https://dream-jobs-server-nine.vercel.app/logout`,
+          loggedUser,
+          {
+            withCredentials: true,
+          }
+        );
       }
     });
 

@@ -11,9 +11,12 @@ const CandidateList = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/application?employer_email=${email}`, {
-        withCredentials: true,
-      })
+      .get(
+        `https://dream-jobs-server-nine.vercel.app/application?employer_email=${email}`,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => setCandidateList(res.data));
   }, [email]);
 
@@ -33,7 +36,7 @@ const CandidateList = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/application/${id}`)
+          .delete(`https://dream-jobs-server-nine.vercel.app/application/${id}`)
           .then((res) => {
             if (res.data.deletedCount) {
               Swal.fire({

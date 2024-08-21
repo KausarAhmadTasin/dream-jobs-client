@@ -39,11 +39,13 @@ const JobDetails = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:5000/application`,
+        `https://dream-jobs-server-nine.vercel.app/application`,
         application_info
       );
       if (res.data.insertedId) {
-        await axios.patch(`http://localhost:5000/jobs/${job._id}/apply`);
+        await axios.patch(
+          `https://dream-jobs-server-nine.vercel.app/jobs/${job._id}/apply`
+        );
 
         document.getElementById("my_modal_1").close();
 
