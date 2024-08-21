@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Tooltip } from "react-tooltip";
 import Marquee from "react-fast-marquee";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const [logos, setLogos] = useState([]);
@@ -26,6 +27,9 @@ const Home = () => {
 
   return (
     <div className="md:container mx-3 md:mx-auto">
+      <Helmet>
+        <title>Dream Jobs | Home</title>
+      </Helmet>
       <Hero></Hero>
       <Tooltip id="my-tooltip" />
 

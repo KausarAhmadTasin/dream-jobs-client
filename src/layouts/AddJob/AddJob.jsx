@@ -3,7 +3,8 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import AuthContext from "../../../provider/AuthProvider/AuthContex";
+import AuthContext from "../../provider/AuthProvider/AuthContex";
+import { Helmet } from "react-helmet";
 
 const AddJob = () => {
   const {
@@ -32,6 +33,10 @@ const AddJob = () => {
 
   return (
     <div className="flex mt-6 md:mt-10 pb-10 items-center justify-center min-h-screen">
+      <Helmet>
+        <title>Dream Jobs | Add Job</title>
+      </Helmet>
+
       <ToastContainer />
       <form
         className="border-black md:w-11/12 lg:w-2/3 w-full mx-4 bg-sky-100 dark:bg-[#1A1B1F] dark:border dark:border-gray-50 py-10 px-5 md:px-20 rounded-md"

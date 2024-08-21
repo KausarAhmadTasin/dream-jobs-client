@@ -3,6 +3,7 @@ import "./Jobs.css";
 import { useEffect, useState } from "react";
 import Job from "../../components/Job/Job";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 
 const Jobs = () => {
   const [loading, setLoading] = useState(true);
@@ -46,6 +47,9 @@ const Jobs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Dream Jobs | All Jobs</title>
+      </Helmet>
       {loading ? (
         <span className="loading min-h-screen flex justify-center mx-auto bg-sky-500 items-center dark:bg-[#1A1B1F] pt-40 loading-ring loading-lg"></span>
       ) : jobs.length === 0 ? (

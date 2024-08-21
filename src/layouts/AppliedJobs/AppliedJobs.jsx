@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import AuthContext from "../../provider/AuthProvider/AuthContex";
+import { Helmet } from "react-helmet";
 
 const AppliedJobs = () => {
   const [appliedJobs, setAppliedJobs] = useState([]);
@@ -73,6 +74,9 @@ const AppliedJobs = () => {
 
   return (
     <div className="min-h-screen mt-5 flex flex-col items-center md:container md:mx-auto">
+      <Helmet>
+        <title>Dream Jobs | Applied Jobs</title>
+      </Helmet>
       <h3 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-3 underline underline-offset-[10px] decoration-dashed decoration-orange-400">
         My Applied Jobs
       </h3>

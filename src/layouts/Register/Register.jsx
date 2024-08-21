@@ -3,6 +3,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import AuthContext from "../../provider/AuthProvider/AuthContex";
 import SocialLinks from "../../components/SocialLinks/SocialLinks";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const [textPassword, setTextPassword] = useState(false);
@@ -44,6 +45,9 @@ const Register = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Dream Jobs | Register</title>
+      </Helmet>
       <div className="hero bg-white dark:bg-[#1A1B1F]   min-h-screen">
         <div className="card border-rose-200 bg-white dark:bg-[#1A1B1F]  border my-10 rounded-mdborder-gray-200 w-11/12 md:w-3/4 lg:w-1/3">
           <form onSubmit={handleRegister} className="card-body">

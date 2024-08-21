@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import AuthContext from "../../provider/AuthProvider/AuthContex";
+import { Helmet } from "react-helmet";
 
 const JobDetails = () => {
   const job = useLoaderData();
@@ -108,6 +109,9 @@ const JobDetails = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Dream Jobs | Job Details</title>
+      </Helmet>
       {!job ? (
         <span className="loading loading-spinner loading-lg"></span>
       ) : (

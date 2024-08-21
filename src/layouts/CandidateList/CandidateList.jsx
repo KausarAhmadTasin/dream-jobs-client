@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../provider/AuthProvider/AuthContex";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const CandidateList = () => {
   const [candidateList, setCandidateList] = useState([]);
@@ -73,6 +74,9 @@ const CandidateList = () => {
 
   return (
     <div className="min-h-screen mt-5 overflow-x-auto md:container md:mx-auto">
+      <Helmet>
+        <title>Dream Jobs | Candidate List</title>
+      </Helmet>
       <h3 className="text-4xl font-semibold text-gray-800 dark:text-gray-100 mb-3 underline underline-offset-[10px] decoration-dashed decoration-orange-400 text-center">
         Applicants List
       </h3>

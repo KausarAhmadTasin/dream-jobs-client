@@ -4,6 +4,7 @@ import { FiEye, FiEyeOff } from "react-icons/fi";
 import { toast } from "react-toastify";
 import AuthContext from "../../provider/AuthProvider/AuthContex";
 import SocialLinks from "../../components/SocialLinks/SocialLinks";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const [textPassword, setTextPassword] = useState(false);
@@ -28,6 +29,9 @@ const Login = () => {
 
   return (
     <div className="flex justify-center bg-white dark:bg-[#1A1B1F] py-24 lg:py-0 lg:min-h-screen items-center ">
+      <Helmet>
+        <title>Dream Jobs | Login</title>
+      </Helmet>
       <div className="lg:w-1/3 border bg-white dark:bg-[#1A1B1F] w-11/12 md:w-3/4 border-rose-200 rounded-md">
         <form onSubmit={handleLogin} className="card-body">
           <div className="form-control">

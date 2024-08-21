@@ -5,12 +5,12 @@ import Jobs from "../layouts/Jobs/Jobs";
 import Login from "../layouts/Login/Login";
 import Register from "../layouts/Register/Register";
 import Home from "../layouts/Home/Home";
-import AddJob from "../layouts/Register/AddJob/AddJob";
 import JobDetails from "../layouts/JobDetails/JobDetails";
 import MyJobs from "../layouts/MyJobs/MyJobs";
 import PrivateRoutes from "./PrivateRoutes";
 import AppliedJobs from "../layouts/AppliedJobs/AppliedJobs";
 import CandidateList from "../layouts/CandidateList/CandidateList";
+import AddJob from "../layouts/AddJob/AddJob";
 
 const router = createBrowserRouter([
   {

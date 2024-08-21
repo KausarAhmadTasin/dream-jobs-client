@@ -3,6 +3,7 @@ import Job from "../../components/Job/Job";
 import axios from "axios";
 import AuthContext from "../../provider/AuthProvider/AuthContex";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 const MyJobs = () => {
   const [loading, setLoading] = useState(true);
@@ -58,6 +59,9 @@ const MyJobs = () => {
 
   return (
     <>
+      <Helmet>
+        <title>Dream Jobs | My Jobs</title>
+      </Helmet>
       {loading ? (
         <span className="loading min-h-screen flex justify-center items-center dark:bg-[#1A1B1F] pt-40 loading-ring loading-lg"></span>
       ) : jobs.length === 0 ? (
